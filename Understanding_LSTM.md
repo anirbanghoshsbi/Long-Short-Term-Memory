@@ -74,4 +74,17 @@ My Book has just three lines and has a vocabulary of {Doug , Jane , Spot , saw .
 The task of the neural network is to find what is the nest word given this sequence 
 of words.
 
+# Writing a Children's Book
+Suppose a Children Book has the following lines
+
+Doug saw Jane.
+Jane saw Spot.
+Spot saw Doud.
+
+Then the dictionary that is formed is 
+
+{Doug , Jane ,Spot,saw,.} these are the unique words and the dictionary is formed of these words only.Our Network Needs to _learn_
+the pattern in sequence of the data in dictionary._So if I have the most recent word as Doug then the network should propose the most frequent word as either saw or . as these are the most frequent word to follow after a name._
+
+
 
