@@ -1,4 +1,4 @@
-# Recurrent Neural Network
+# Recurrent Neural Network (Long Short Term Memory)
 
 Recurrent Neural Networks are a good example of algorithms that can be used for sequence problems. By Sequence problem , I mean anything that 
 has a time factor attached to it.
@@ -65,14 +65,6 @@ Bread yesterday ,which I missed but then I follow the schedule meticulously and 
 > These time steps or the ability of the neural network to remember things in past for a fixed number of time steps is called 
 >Back Propagation through Time.
 
-# Writing a children's book :
-
-Let us a say we are writing a children's book.
-The book has "Doug saw Jane. Jane saw Spot. Spot Saw Doug."
-
-My Book has just three lines and has a vocabulary of {Doug , Jane , Spot , saw .}.
-The task of the neural network is to find what is the nest word given this sequence 
-of words.
 
 # Writing a Children's Book
 Suppose a Children Book has the following lines
@@ -85,6 +77,10 @@ Then the dictionary that is formed is
 
 {Doug , Jane ,Spot,saw,.} these are the unique words and the dictionary is formed of these words only.Our Network Needs to _learn_
 the pattern in sequence of the data in dictionary._So if I have the most recent word as Doug then the network should propose the most frequent word as either saw or . as these are the most frequent word to follow after a name._
+
+Now let us assume that the Neural Network Predicts that the word after Doug is _saw_ now the Network needs to make the next prediction and it is now a name as probablistically it is evident that after the word saw we normally the NN gives a name say either Doug , or Jane or Spot. 
+But the issue arises when we have a Doug saw Doug prediction. The LSTM allows to prevent mistakes like these with its multiple neural networks each for a particular task say selection, forgetting or ignoring etc. which prevents issues like Doug saw Doug kind of issues.
+
 
 
 
