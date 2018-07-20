@@ -79,8 +79,64 @@ Then the dictionary that is formed is
 the pattern in sequence of the data in dictionary._So if I have the most recent word as Doug then the network should propose the most frequent word as either saw or . as these are the most frequent word to follow after a name._
 
 Now let us assume that the Neural Network Predicts that the word after Doug is _saw_ now the Network needs to make the next prediction and it is now a name as probablistically it is evident that after the word saw we normally the NN gives a name say either Doug , or Jane or Spot. 
-But the issue arises when we have a Doug saw Doug prediction. The LSTM allows to prevent mistakes like these with its multiple neural networks each for a particular task say selection, forgetting or ignoring etc. which prevents issues like Doug saw Doug kind of issues.
+But the issue arises when we have a Doug saw Doug prediction. The LSTM allows to prevent mistakes like these with its multiple neural networks each for a particular task say selection, forgetting or ignoring etc. which prevents issues like Doug saw Doug kind of issues.The LSTM Neural Network can hold on to the predictions for future , if my time step is 1 then the Network will remember that _yesterday it had predicted Doug today It predicted saw_  so tomorrow's prediction will certainly include the fact yesterday I predicted saw and on day before yesterday (t+1) had predicted Doug so , it should not predict a Doug or saw but the other names like Spot or Jane.
 
+# How Does LSTM perform the above feat?
+1.The LSTM does have the ability to remove or add information to the cell state, carefully regulated by structures called gates.
+Gates are a way to optionally let information through. They are composed out of a sigmoid neural net layer and a pointwise multiplication operation.
+2. The core reason that recurrent nets are more exciting is that they allow us to operate over sequences of vectors: Sequences in the input, the output, or in the most general case both.[One --> One] ,[One-->Many] , [Many-->Many] ,[Many-->Many].This overcomes the  glaring limitation of Vanilla Neural Networks : they accept a fixed-sized vector as input (e.g. an image) and produce a fixed-sized vector as output (e.g. probabilities of different classes). Not only that: These models perform this mapping using a fixed amount of computational steps (e.g. the number of layers in the model).
 
+# Examples of Sequences :
 
+# Sequence Prediction:
+Suppose I have numbers 1,2,3,4,5,6 then the NN needs to provide the next item in the list which in our case is 7.
+
+[1,2,3,4,5,6] --[Model]--> [7] as the output.
+
+Some examples of sequence prediction problems include:
+1.Weather Forecasting. Given a sequence of observations about the weather over time,predict the expected weather tomorrow.
+2.Stock Market Prediction. Given a sequence of movements of a security over time,predict the next movement of the security.
+3.Product Recommendation. Given a sequence of past purchases for a customer, predict the next purchase for a customer.
+
+# Sequence Classification:
+
+[1,2,3,4]--[Model]--> [Good]
+
+The objective of sequence classification is to build a classification model using a labeled dataset [...] so that the model can be used to predict the class label of an unseen sequence.
+
+Examples :
+
+1.DNA Sequence Classification. Given a DNA sequence of A, C, G, and T values,predict whether the sequence is for a coding or non-coding region.
+2.Anomaly Detection. Given a sequence of observations, predict whether the sequence is anomalous or not.
+3.Sentiment Analysis. Given a sequence of text such as a review or a tweet, predict whether the sentiment of the text is positive or negative.
+
+# Sequence Generation :
+Sequence generation involves generating a new output sequence that has the same general characteristics as other sequences in the corpus
+example [[1,3,5],[7,9,11]--[Model]--> [3,5,7].
+
+Uses of Sequence Generation
+1.Text Generation. Given a corpus of text, such as the works of Shakespeare, generate new sentences or paragraphs of text that read they could have been drawn from the corpus.
+2.Handwriting Prediction. Given a corpus of handwriting examples, generate handwriting for new phrases that has the properties of handwriting in the corpus.
+3.Music Generation. Given a corpus of examples of music, generate new musical pieces that have the properties of the corpus.
+
+# LSTMS in details 
+
+LSTM Weights:
+A memory cell has weight parameters for the input, output, as well as an internal state that is built up through exposure to input time steps.
+1.Input Weights. Used to weight input for the current time step.
+2.Output Weights. Used to weight the output from the last time step.
+3.Internal State. Internal state used in the calculation of the output for this time step.
+
+LSTM Gates
+The key to the memory cell are the gates. These too are weighted functions that further govern the information flow in the cell. There are three gates:
+1.Forget Gate: Decides what information to discard from the cell.
+2.Input Gate: Decides which values from the input to update the memory state.
+3.Output Gate: Decides what to output based on input and the memory of the cell.
+
+The forget gate and input gate are used in the updating of the internal state. The output gate is a final limiter on what the cell actually outputs, (and is responsible for preventing _Doug saw Doug_ kind of Prediction).
+
+# Advantage of LSTM :
+ 1.Overcomes the technical problems of training an RNN, namely vanishing and exploding gradients.
+2.Possesses memory to overcome the issues of long-term temporal dependency with input sequences.
+3.Process input sequences and output sequences time step by time step, allowing variable length inputs and outputs.
 
